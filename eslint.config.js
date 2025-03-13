@@ -18,12 +18,7 @@ export default [
       },
     },
     settings: { react: { version: "18.3" } ,
-    "import/resolver": {
-      node: {
-        paths: ["src"], 
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
-      },
-    },},
+   
     plugins: {
       react,
       "react-hooks": reactHooks,
@@ -40,6 +35,6 @@ export default [
         "warn",
         { allowConstantExport: true },
       ],
-    },
+    },}
   },
 ];

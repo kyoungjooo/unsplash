@@ -8,4 +8,5 @@
 - CSS 스타일링을 위한 sass 설치: `npm install sass`<br>
 - React Router 설치: `npm i react-router-dom localforage match-sorter sort-by`<br>
 - React Toast Popup 모듈 설치: `npm i react-simple-toasts`<br>
-- resolve.alias 경로 설정을 위한 설치: `npm i path`
+- resolve.alias 경로 설정을 위한 설치: `npm i path`<br>
+- 데이터 상태관리를 위한 라이브러리 설치 `npm i @tanstack/react-query`
