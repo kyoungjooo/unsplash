@@ -1,14 +1,17 @@
-import { useImageQuery } from "@/hooks/queries/useImageQuery";
 import styles from "./styles/main.module.scss";
-
+//import { useImageQuery } from "@/hooks/queries/useImageQuery";
+import useInfinity from "@/hooks/useInfinity";
 export default function MainPage() {
   const searchValue = "Korea";
-  const pageValue = 10;
   const perPage = 30;
 
-  const { data: imageList } = useImageQuery({
+  const {
+    data: imageList,
+    fetchNextPage,
+    isLoading,
+    hasNextPage,
+  } = useInfinity({
     searchValue,
-    pageValue,
     perPage,
   });
 

@@ -12,6 +12,7 @@ export default defineConfig({
       "@assets": path.resolve(__dirname, "src/assets"),
       "@recoil": path.resolve(__dirname, "src/recoil"),
       "@apis": path.resolve(__dirname, "src/apis"),
+      "@hooks": path.resolve(__dirname, "src/hooks"),
     },
   },
   //scss
