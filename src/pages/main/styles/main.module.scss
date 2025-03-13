@@ -23,5 +23,6 @@ $NAVIGATION-HEIGHT: 50px;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: auto;
     max-width: min-content;
+    height: fit-content;
   }
 }

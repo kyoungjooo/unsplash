@@ -1,15 +1,13 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import imageApi from "@/apis/image/imageApi";
 
-const useInfinity = ({ searchValue, perPage }) => {
+const useInfinity = (params) => {
   const { data, fetchNextPage, isLoading, hasNextPage } = useInfiniteQuery({
-    queryKey: ["images", searchValue],
+    queryKey: ["images", params],
     queryFn: ({ pageParam = 1 }) =>
-      imageApi.getImagesList({ searchValue, pageValue: pageParam, perPage }),
+      imageApi.getImagesList({ page: pageParam, params }),
     initialPageParam: 1,
-    getNextPageParam: (lastPage, allPages) => {
-      return lastPage?.nextPage || null;
-    },
+    getNextPageParam: (lastPage, allPages) => lastPage.page + 1,
   });
   return { data, fetchNextPage, isLoading, hasNextPage };
 };
