@@ -18,7 +18,6 @@ export default function MainPage() {
   } = useInfinity({
     params,
   });
-
   const { pages, pageParams } = imageLists || {};
 
   useEffect(() => {
