@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import CommonBanner from "./components/common/banner/CommonBanner";
-import ImagesContainer from "./components/common/image/ImagesContainer";
 import styles from "./styles/main.module.scss";
 import useInfinity from "@/hooks/useInfinity";
+import ImagesContainer from "./components/common/image/ImagesContainer";
+
 export default function MainPage() {
   const [params, setParams] = useState({
     searchValue: "Korea",
     perPage: 30,
   });
-
   const lastImageItemRef = useRef(null);
   const {
     data: imageLists,
@@ -54,7 +54,7 @@ export default function MainPage() {
         {/* 공통 배너 부분 */}
         <div className={styles.main__contents}>
           <CommonBanner />
-          <div className={styles.main__images__container}>
+          <div className={styles.main__images}>
             <ImagesContainer pages={pages} />
           </div>
           <div ref={lastImageItemRef}></div>

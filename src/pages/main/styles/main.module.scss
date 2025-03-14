@@ -17,12 +17,8 @@ $NAVIGATION-HEIGHT: 50px;
     justify-content: flex-start;
     height: calc(100% - $HEADER-HEIGHT - $NAVIGATION-HEIGHT - $FOOTER-HEIGHT);
   }
-  &__images__container {
-    display: grid;
-    gap: 24px;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: auto;
-    max-width: min-content;
-    height: fit-content;
+  &__images {
+    column-count: 3;
+    column-gap: 24px;
   }
 }
