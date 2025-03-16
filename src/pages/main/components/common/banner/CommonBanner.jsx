@@ -10,10 +10,6 @@ export default function CommonBanner() {
             <br />
             모든 지역에 있는 크리에이터들의 지원을 받습니다.
           </span>
-          <div className={styles.banner__search}>
-            <input type="text" />
-            <button type="button">검색</button>
-          </div>
         </div>
         <div className={styles.banner__card}>
           <div className={styles.banner__card__image}></div>

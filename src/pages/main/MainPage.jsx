@@ -3,6 +3,7 @@ import CommonBanner from "./components/common/banner/CommonBanner";
 import styles from "./styles/main.module.scss";
 import useInfinity from "@/hooks/useInfinity";
 import ImagesContainer from "./components/common/image/ImagesContainer";
+import CommonHeader from "./components/common/header/CommonHeader";
 
 export default function MainPage() {
   const [params, setParams] = useState({
@@ -48,7 +49,7 @@ export default function MainPage() {
   return (
     <>
       <div className={styles.main}>
-        {/* 공통 헤더 UI 부분 */}
+        <CommonHeader />
         {/* 공통 네비게이션 UI 부분 */}
         {/* 공통 배너 부분 */}
         <div className={styles.main__contents}>
