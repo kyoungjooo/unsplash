@@ -1,6 +1,16 @@
+import { useState } from "react";
 import styles from "./CommonHeader.module.scss";
 import logo from "@assets/images/logo.svg";
+import check from "@assets/images/check.svg";
+
+const languages = ["한국어", "영어"];
 export default function CommonHeader() {
+  const [isToggle, setToggle] = useState(false);
+
+  const handleToggleLanguage = () => {
+    setToggle((prev) => !prev);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.header__left}>
@@ -19,14 +29,26 @@ export default function CommonHeader() {
       </div>
       <div className={styles.header__right}>
         <div className={styles.header__language}>
-          <span className={styles.language__icon}></span>
-          <span className={styles.language__selected}>한국어</span>
-          <div className={styles.language__container}>
-            <ul>
-              <li>한국어</li>
-              <li>영어</li>
-            </ul>
-          </div>
+          <span
+            className={styles.language__wrapper}
+            onClick={handleToggleLanguage}
+          >
+            <span className={styles.language__icon}></span>
+            <span className={styles.language__selected}>한국어</span>
+            {isToggle && (
+              <div className={styles.language__container}>
+                <span>언어 선택</span>
+                <ul className={styles.language__items}>
+                  {languages.map((lang) => (
+                    <li className={styles.language__item}>
+                      <span>{}</span>
+                      <button>{lang}</button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </span>
         </div>
       </div>
     </header>

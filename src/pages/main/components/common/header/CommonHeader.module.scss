@@ -20,7 +20,9 @@
   &__search {
     width: 100%;
   }
-
+  &__right {
+    margin-left: auto;
+  }
   .search {
     &__container {
       display: flex;
@@ -30,18 +32,16 @@
     }
     &__icon {
       all: unset;
-      background-image: url("/src/assets/images/search.svg");
+      mask-image: url("/src/assets/images/search.svg");
       position: absolute;
       left: 0;
       width: 24px;
       height: 24px;
-      background-size: contain;
+      mask-size: contain;
       top: 50%;
-
       transform: translate(50%, -50%);
-      background-repeat: no-repeat;
-      filter: invert(48%) sepia(2%) saturate(0%) hue-rotate(355deg)
-        brightness(95%) contrast(90%);
+      mask-repeat: no-repeat;
+      background-color: $color-gray-700;
     }
     &__input {
       flex-grow: 1;
@@ -60,9 +60,75 @@
       background-color: $color-gray-000;
     }
   }
+
   .language {
+    &__wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      cursor: pointer;
+      width: fit-content;
+    }
+    &__icon {
+      width: 24px;
+      height: 24px;
+      mask-size: contain;
+      mask-image: url("/src/assets/images/language.svg");
+      background-color: $color-gray-400;
+      display: inline-block;
+      margin-right: 6px;
+    }
+    &__item {
+      color: $color-gray-500;
+      display: flex;
+      padding: 8px 16px;
+      span {
+        width: 24px;
+        height: 24px;
+      }
+    }
     &__container {
-      display: none;
+      position: absolute;
+      font-size: 14px;
+      width: 170px;
+      padding: 8px 0;
+      bottom: -10px;
+      transform: translateY(100%);
+      background-color: $color-gray-000;
+      border: 1px solid $color-gray-300;
+      border-radius: 6px;
+      span {
+        display: block;
+        padding: 8px 16px;
+      }
+      button {
+        all: unset;
+      }
+      li:hover {
+        background-color: $color-gray-200;
+      }
+    }
+    &__selected {
+      color: $color-gray-500;
+      display: flex;
+      align-items: center;
+
+      &::after {
+        content: "";
+        mask-image: url("/src/assets/images/drop_down.svg");
+        width: 28px;
+        height: 28px;
+        display: inline-block;
+        mask-size: contain;
+        background-color: $color-gray-300;
+      }
+      &:hover {
+        color: $color-gray-900;
+      }
+      &:hover::after {
+        background-color: $color-gray-500;
+      }
     }
   }
 }
