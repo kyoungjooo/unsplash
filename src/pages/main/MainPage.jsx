@@ -4,13 +4,16 @@ import styles from "./styles/main.module.scss";
 import useInfinity from "@/hooks/useInfinity";
 import ImagesContainer from "./components/common/image/ImagesContainer";
 import CommonHeader from "./components/common/header/CommonHeader";
+import CommonNavigation from "./components/common/navigation/CommonNavigation";
 
 export default function MainPage() {
   const [params, setParams] = useState({
     searchValue: "Korea",
     perPage: 30,
   });
+
   const lastImageItemRef = useRef(null);
+
   const {
     data: imageLists,
     fetchNextPage,
@@ -50,8 +53,7 @@ export default function MainPage() {
     <>
       <div className={styles.main}>
         <CommonHeader />
-        {/* 공통 네비게이션 UI 부분 */}
-        {/* 공통 배너 부분 */}
+        <CommonNavigation />
         <div className={styles.main__contents}>
           <CommonBanner />
           <div className={styles.main__images}>
