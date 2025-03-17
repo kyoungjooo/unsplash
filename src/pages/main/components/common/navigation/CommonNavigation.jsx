@@ -1,24 +1,24 @@
 import { useState } from "react";
 import styles from "./CommonNavigation.module.scss";
-import { navData } from "./navData";
 
-export default function CommonNavigation() {
+export default function CommonNavigation({ navData }) {
   //params로 현재 경로 기본으로
   const [isCurrentMenu, setCurrentMenu] = useState("");
+  const sliceFixedMenuData = navData.slice(0, 2);
+  const sliceScrollMenuData = navData.slice(2);
 
   return (
     <nav className={styles.navigation}>
       <div className={styles.navigation__wrapper}>
         <ul className={styles.navigation__fixed}>
-          <li className={styles.navigation__menu}>
-            <button>사진</button>
-          </li>
-          <li className={styles.navigation__menu}>
-            <button>일러스트</button>
-          </li>
+          {sliceFixedMenuData.map((menu) => (
+            <li className={styles.navigation__menu}>
+              <button>{menu.title}</button>
+            </li>
+          ))}
         </ul>
         <ul className={styles.navigation__scroll}>
-          {navData.map((menu) => (
+          {sliceScrollMenuData.map((menu) => (
             <li className={styles.navigation__menu}>
               <button>{menu.title}</button>
             </li>

@@ -14,6 +14,10 @@ export default function CommonBanner({ currentMenu }) {
               모든 지역에 있는 크리에이터들의 지원을 받습니다.
             </p>
           </div>
+          <div>
+            <button>관련도순</button>
+            <button>인기순</button>
+          </div>
         </div>
         <div className={`${styles.banner__item}, ${styles.banner__cards}`}>
           <article className={styles.card__container}>

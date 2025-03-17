@@ -6,17 +6,19 @@ import ImagesContainer from "./components/common/image/ImagesContainer";
 import CommonHeader from "./components/common/header/CommonHeader";
 import CommonNavigation from "./components/common/navigation/CommonNavigation";
 import { useParams } from "react-router-dom";
+import { navData } from "./components/common/navigation/navData";
 
 export default function MainPage() {
   const paramData = useParams();
   console.log(paramData);
+  const lastImageItemRef = useRef(null);
 
   const [params, setParams] = useState({
     searchValue: "Korea",
-    perPage: 30,
+    lang: "ko",
+    per_page: 30,
+    order_by: "relevant",
   });
-
-  const lastImageItemRef = useRef(null);
 
   const {
     data: imageLists,
@@ -34,7 +36,6 @@ export default function MainPage() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        console.log("관찰중");
         const entry = entries[0];
         if (entry.isIntersecting && !isLoading) {
           fetchNextPage();
@@ -58,7 +59,7 @@ export default function MainPage() {
       <div className={styles.main}>
         <div className={styles.main__header}>
           <CommonHeader />
-          <CommonNavigation />
+          <CommonNavigation navData={navData} />
         </div>
         <div className={styles.main__contents}>
           <CommonBanner />

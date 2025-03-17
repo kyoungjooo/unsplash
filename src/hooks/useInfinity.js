@@ -2,6 +2,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import imageApi from "@/apis/image/imageApi";
 
 const useInfinity = (params) => {
+  console.log(params);
   const { data, fetchNextPage, isLoading, hasNextPage } = useInfiniteQuery({
     queryKey: ["images", params],
     queryFn: ({ pageParam = 1 }) =>

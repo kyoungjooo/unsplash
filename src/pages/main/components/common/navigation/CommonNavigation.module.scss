@@ -9,6 +9,7 @@
     gap: 24px;
     position: relative;
     height: inherit;
+
     ul {
       display: flex;
       align-items: center;
@@ -53,7 +54,6 @@
       font-weight: 500;
       white-space: nowrap;
       height: 100%;
-      cursor: pointer;
       &:hover {
         color: $color-gray-900;
       }
