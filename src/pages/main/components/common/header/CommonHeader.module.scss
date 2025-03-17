@@ -41,7 +41,7 @@
       top: 50%;
       transform: translate(50%, -50%);
       mask-repeat: no-repeat;
-      background-color: $color-gray-700;
+      background-color: $color-gray-400;
     }
     &__input {
       flex-grow: 1;
@@ -69,6 +69,8 @@
       justify-content: end;
       cursor: pointer;
       width: fit-content;
+      background-color: $color-gray-000;
+      z-index: 1;
     }
     &__icon {
       width: 24px;

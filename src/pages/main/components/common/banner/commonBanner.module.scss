@@ -1,8 +1,46 @@
 .banner {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
+  padding: 56px 0;
+  width: 100%;
   &__container {
+    display: grid;
+    padding: 0 20px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  &__item {
+    width: 100%;
+  }
+  &__cards {
     display: flex;
+    gap: 24px;
+  }
+  &__text {
+    display: flex;
+    align-items: center;
+  }
+  .card {
+    &__container {
+      width: 300px;
+      height: 300px;
+      border: 1px solid $color-gray-300;
+      border-radius: 8px;
+    }
+  }
+  .text {
+    &__container {
+      span {
+        font-size: 15px;
+        color: $color-gray-500;
+      }
+    }
+    &__title {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    &__desc {
+      margin-top: 24px;
+      font-size: 18px;
+      line-height: 1.8;
+    }
   }
 }

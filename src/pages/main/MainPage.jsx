@@ -5,8 +5,12 @@ import useInfinity from "@/hooks/useInfinity";
 import ImagesContainer from "./components/common/image/ImagesContainer";
 import CommonHeader from "./components/common/header/CommonHeader";
 import CommonNavigation from "./components/common/navigation/CommonNavigation";
+import { useParams } from "react-router-dom";
 
 export default function MainPage() {
+  const paramData = useParams();
+  console.log(paramData);
+
   const [params, setParams] = useState({
     searchValue: "Korea",
     perPage: 30,
@@ -52,8 +56,10 @@ export default function MainPage() {
   return (
     <>
       <div className={styles.main}>
-        <CommonHeader />
-        <CommonNavigation />
+        <div className={styles.main__header}>
+          <CommonHeader />
+          <CommonNavigation />
+        </div>
         <div className={styles.main__contents}>
           <CommonBanner />
           <div className={styles.main__images}>
