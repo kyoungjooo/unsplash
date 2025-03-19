@@ -17,8 +17,12 @@ export default function MainPage() {
     searchValue: "Korea",
     lang: "ko",
     per_page: 30,
-    order_by: "relevant",
+    // order_by: "relevant",
   });
+
+  const handleUpdateSearchParams = (searchValue) => {
+    setParams((prev) => ({ ...prev, searchValue }));
+  };
 
   const {
     data: imageLists,
@@ -29,7 +33,7 @@ export default function MainPage() {
     params,
   });
   const { pages, pageParams } = imageLists || {};
-
+  console.log(pages);
   useEffect(() => {
     const el = lastImageItemRef.current;
     if (!el) return;
@@ -58,7 +62,7 @@ export default function MainPage() {
     <>
       <div className={styles.main}>
         <div className={styles.main__header}>
-          <CommonHeader />
+          <CommonHeader handleUpdateSearchParams={handleUpdateSearchParams} />
           <CommonNavigation navData={navData} />
         </div>
         <div className={styles.main__contents}>

@@ -1,27 +1,33 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./CommonHeader.module.scss";
 import logo from "@assets/images/logo.svg";
 import check from "@assets/images/check.svg";
 
 const languages = ["한국어", "영어"];
-export default function CommonHeader() {
+export default function CommonHeader({ handleUpdateSearchParams }) {
   const [isToggle, setToggle] = useState(false);
-
+  const searchRef = useRef();
   const handleToggleLanguage = () => {
     setToggle((prev) => !prev);
   };
-
+  const handleSearch = (e) => {
+    e.preventDefault();
+    handleUpdateSearchParams(searchRef.current.value);
+    searchRef.current.value = "";
+  };
   return (
     <header className={styles.header}>
       <div className={styles.header__left}>
         <img src={logo} alt="" className={styles.header__logo} />
-        <form className={styles.header__search}>
+        <form className={styles.header__search} onSubmit={handleSearch}>
           <div className={styles.search__container}>
             <button className={styles.search__icon}></button>
             <input
               className={styles.search__input}
               type="text"
+              name="search"
               placeholder="사진과 일러스트 검색"
+              ref={searchRef}
             />
             <button className={styles.search__button}>이미지 검색</button>
           </div>
