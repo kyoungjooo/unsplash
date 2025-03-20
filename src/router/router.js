@@ -6,6 +6,9 @@ export const router = createBrowserRouter([
   {
     path: "/",
     Component: MainPage,
-    children: [{ path: ":search", Component: ImagesContainer }],
+    children: [
+      { index: true, Component: ImagesContainer },
+      { path: ":search", Component: ImagesContainer },
+    ],
   },
 ]);

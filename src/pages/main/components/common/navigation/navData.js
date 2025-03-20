@@ -2,7 +2,7 @@ export const navData = [
   {
     title: "사진",
     english: "Photos",
-    path: "",
+    path: "photos",
     isActive: true,
   },
   {
@@ -14,7 +14,7 @@ export const navData = [
   {
     title: "배경화면",
     english: "Wallpapers",
-    path: "",
+    path: "wallpapers",
     isActive: false,
   },
   {

@@ -4,17 +4,19 @@ import logo from "@assets/images/logo.svg";
 import check from "@assets/images/check.svg";
 
 const languages = ["한국어", "영어"];
-export default function CommonHeader({ handleUpdateSearchParams }) {
+export default function CommonHeader({ setParams }) {
   const [isToggle, setToggle] = useState(false);
   const searchRef = useRef();
+
   const handleToggleLanguage = () => {
     setToggle((prev) => !prev);
   };
   const handleSearch = (e) => {
     e.preventDefault();
-    handleUpdateSearchParams(searchRef.current.value);
+    setParams((prev) => ({ ...prev, searchValue: searchRef.current.value }));
     searchRef.current.value = "";
   };
+
   return (
     <header className={styles.header}>
       <div className={styles.header__left}>

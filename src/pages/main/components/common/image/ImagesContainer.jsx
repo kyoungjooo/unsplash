@@ -15,6 +15,7 @@ const chunkArray = (array, size) => {
 export default function ImagesContainer() {
   const lastImageItemRef = useRef(null);
   const params = useOutletContext();
+
   const {
     data: imageLists,
     fetchNextPage,
@@ -24,6 +25,7 @@ export default function ImagesContainer() {
     params,
   });
   const { pages, pageParams } = imageLists || {};
+
   //page 기존 필터되지 않은 데이터
   const [chunkedimagesArray, setChunkedImagesArray] = useState();
   useEffect(() => {
