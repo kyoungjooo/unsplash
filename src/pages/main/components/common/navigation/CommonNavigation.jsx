@@ -11,15 +11,15 @@ export default function CommonNavigation({ navData }) {
     <nav className={styles.navigation}>
       <div className={styles.navigation__wrapper}>
         <ul className={styles.navigation__fixed}>
-          {sliceFixedMenuData.map((menu) => (
-            <li className={styles.navigation__menu}>
+          {sliceFixedMenuData.map((menu, idx) => (
+            <li key={idx} className={styles.navigation__menu}>
               <button>{menu.title}</button>
             </li>
           ))}
         </ul>
         <ul className={styles.navigation__scroll}>
           {sliceScrollMenuData.map((menu) => (
-            <li className={styles.navigation__menu}>
+            <li key={menu.title} className={styles.navigation__menu}>
               <button>{menu.title}</button>
             </li>
           ))}
