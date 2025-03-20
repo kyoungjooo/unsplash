@@ -46,7 +46,7 @@ export default function ImagesContainer() {
         }
       },
       {
-        rootMargin: "200px",
+        rootMargin: "100px",
         threshold: 0.5,
       }
     );

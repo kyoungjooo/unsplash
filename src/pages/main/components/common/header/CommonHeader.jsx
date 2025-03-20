@@ -2,24 +2,32 @@ import { useRef, useState } from "react";
 import styles from "./commonHeader.module.scss";
 import logo from "@assets/images/logo.svg";
 import check from "@assets/images/check.svg";
+import { useNavigate } from "react-router-dom";
 
 const languages = ["한국어", "영어"];
 export default function CommonHeader({ setParams }) {
   const [isToggle, setToggle] = useState(false);
   const searchRef = useRef();
-
+  const navigate = useNavigate();
   const handleToggleLanguage = () => {
     setToggle((prev) => !prev);
   };
+
   const handleSearch = (e) => {
     e.preventDefault();
     setParams((prev) => ({ ...prev, searchValue: searchRef.current.value }));
+    navigate(searchRef.current.value);
   };
 
   return (
     <header className={styles.header}>
       <div className={styles.header__left}>
-        <img src={logo} alt="" className={styles.header__logo} />
+        <img
+          src={logo}
+          alt=""
+          className={styles.header__logo}
+          onClick={() => navigate("/")}
+        />
         <form className={styles.header__search} onSubmit={handleSearch}>
           <div className={styles.search__container}>
             <button className={styles.search__icon}></button>

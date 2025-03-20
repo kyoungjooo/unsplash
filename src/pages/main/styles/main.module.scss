@@ -16,6 +16,7 @@ $NAVIGATION-HEIGHT: 50px;
     top: 0;
     z-index: 1;
     background-color: $color-gray-000;
+    cursor: pointer;
   }
   &__contents {
     display: flex;

@@ -3,15 +3,12 @@ import styles from "./commonNavigation.module.scss";
 import { navData } from "./navData";
 import { useNavigate, useParams } from "react-router-dom";
 export default function CommonNavigation({ setParams }) {
+  const navigate = useNavigate();
   const params = useParams();
-
   const [navMenus, setNavMenus] = useState(navData);
   const [isActive, setActive] = useState(params?.search);
-
   const sliceFixedMenuData = navMenus.slice(0, 2);
   const sliceScrollMenuData = navMenus.slice(2);
-
-  const navigate = useNavigate();
 
   const handleClickMenu = (menu) => {
     setParams((prev) => ({ ...prev, searchValue: menu.path }));
@@ -28,8 +25,6 @@ export default function CommonNavigation({ setParams }) {
       )
     );
   }, [isActive]);
-
-  const handleUpdateMenuActive = () => {};
 
   return (
     <nav className={styles.navigation}>

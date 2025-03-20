@@ -9,6 +9,7 @@ const useInfinity = (params) => {
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
       const currentPage = allPages.length;
+      console.log("현", currentPage);
       const totalPages = lastPage?.total_pages || 1;
       return currentPage < totalPages ? currentPage + 1 : null;
     },
