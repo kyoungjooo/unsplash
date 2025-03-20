@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./CommonNavigation.module.scss";
+import styles from "./commonNavigation.module.scss";
 
 export default function CommonNavigation({ navData }) {
   //params로 현재 경로 기본으로

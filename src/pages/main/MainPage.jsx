@@ -7,6 +7,7 @@ import CommonHeader from "./components/common/header/CommonHeader";
 import CommonNavigation from "./components/common/navigation/CommonNavigation";
 import { useParams } from "react-router-dom";
 import { navData } from "./components/common/navigation/navData";
+import CommonFooter from "./components/common/footer/CommonFooter";
 
 export default function MainPage() {
   const paramData = useParams();
@@ -72,7 +73,7 @@ export default function MainPage() {
           </div>
           <div ref={lastImageItemRef}></div>
         </div>
-        {/* 공통 푸터 부분*/}
+        <CommonFooter />
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import styles from "./CommonHeader.module.scss";
+import styles from "./commonHeader.module.scss";
 import logo from "@assets/images/logo.svg";
 import check from "@assets/images/check.svg";
 
