@@ -14,7 +14,6 @@ export default function CommonHeader({ setParams }) {
   const handleSearch = (e) => {
     e.preventDefault();
     setParams((prev) => ({ ...prev, searchValue: searchRef.current.value }));
-    searchRef.current.value = "";
   };
 
   return (
