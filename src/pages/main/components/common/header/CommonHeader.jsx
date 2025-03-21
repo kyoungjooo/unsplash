@@ -18,7 +18,7 @@ export default function CommonHeader({ setParams }) {
     setParams((prev) => ({ ...prev, searchValue: searchRef.current.value }));
     navigate(searchRef.current.value);
   };
-
+  //로고 누르면 photo로 이동,
   return (
     <header className={styles.header}>
       <div className={styles.header__left}>

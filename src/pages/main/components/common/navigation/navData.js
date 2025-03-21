@@ -54,6 +54,12 @@ export const navData = [
     isActive: false,
   },
   {
+    title: "거리사진",
+    english: "Street Photography",
+    path: "street-photography",
+    isActive: false,
+  },
+  {
     title: "사람",
     english: "Peoples",
     path: "people",
@@ -63,6 +69,36 @@ export const navData = [
     title: "동물",
     english: "Animals",
     path: "animals",
+    isActive: false,
+  },
+  {
+    title: "실험적인",
+    english: "Experimental",
+    path: "experimental",
+    isActive: false,
+  },
+  {
+    title: "패션 & 뷰티",
+    english: "Fashion & Beauty",
+    path: "fashion-beauty",
+    isActive: false,
+  },
+  {
+    title: "식음료",
+    english: "Food & Drink",
+    path: "food-drink",
+    isActive: false,
+  },
+  {
+    title: "스포츠",
+    english: "Sports",
+    path: "sports",
+    isActive: false,
+  },
+  {
+    title: "건강 및 웰빙",
+    english: "Health & Wellness",
+    path: "health",
     isActive: false,
   },
 ];

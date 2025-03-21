@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./imagesContainer.module.scss";
 import useInfinity from "@/hooks/useInfinity";
 import { useOutletContext } from "react-router-dom";
+import CommonDialog from "../dialog/CommonDialog";
 const sliceNum = 10;
 
 const chunkArray = (array, size) => {
@@ -15,7 +16,8 @@ const chunkArray = (array, size) => {
 export default function ImagesContainer() {
   const lastImageItemRef = useRef(null);
   const params = useOutletContext();
-
+  const dialogRef = useRef();
+  const [selectedImage, setSelectedImage] = useState(null);
   const {
     data: imageLists,
     fetchNextPage,
@@ -25,6 +27,11 @@ export default function ImagesContainer() {
     params,
   });
   const { pages, pageParams } = imageLists || {};
+
+  const handleOpenModal = (imageData) => {
+    setSelectedImage(imageData);
+    dialogRef.current.open();
+  };
 
   //page 기존 필터되지 않은 데이터
   const [chunkedimagesArray, setChunkedImagesArray] = useState();
@@ -46,7 +53,7 @@ export default function ImagesContainer() {
         }
       },
       {
-        rootMargin: "100px",
+        rootMargin: "200px",
         threshold: 0.5,
       }
     );
@@ -61,6 +68,7 @@ export default function ImagesContainer() {
   //3열이 넘어가면 다음 행으로 넘어가기
   return (
     <>
+      <CommonDialog ref={dialogRef} selectedImage={selectedImage} />
       <div className={styles.images}>
         {chunkedimagesArray?.map((chunkedimages, idx) => {
           return (
@@ -70,6 +78,7 @@ export default function ImagesContainer() {
                   key={image.id}
                   className={styles.images__item}
                   src={image.urls.small}
+                  onClick={() => handleOpenModal(image)}
                 />
               ))}
             </div>
