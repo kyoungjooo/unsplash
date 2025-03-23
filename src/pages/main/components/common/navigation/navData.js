@@ -3,7 +3,7 @@ export const navData = [
     title: "사진",
     english: "Photos",
     path: "photos",
-    isActive: true,
+    isActive: false,
   },
   {
     title: "일러스트",
