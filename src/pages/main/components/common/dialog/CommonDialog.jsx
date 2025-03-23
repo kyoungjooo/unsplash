@@ -1,9 +1,8 @@
 import ButtonLine from "@/shared/components/button/ButtonLine";
 import styles from "./commonDialog.module.scss";
-import { useEffect, useImperativeHandle, useRef } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import formatDate from "@/shared/util/formatDate";
-
-export default function CommonDialog({ ref, selectedImage }) {
+export default forwardRef(function CommonDialog({ selectedImage }, ref) {
   console.log(selectedImage);
   const dialogRef = useRef();
   const {
@@ -18,6 +17,7 @@ export default function CommonDialog({ ref, selectedImage }) {
     width,
     updated_at,
   } = selectedImage || {};
+
   useImperativeHandle(ref, handleModal);
 
   useEffect(() => {
@@ -86,4 +86,4 @@ export default function CommonDialog({ ref, selectedImage }) {
       </div>
     </dialog>
   );
-}
+});

@@ -5,16 +5,15 @@ import CommonHeader from "./components/common/header/CommonHeader";
 import CommonNavigation from "./components/common/navigation/CommonNavigation";
 import { Outlet, useParams } from "react-router-dom";
 import CommonFooter from "./components/common/footer/CommonFooter";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { paramsState } from "@/recoil/atoms/paramsAtom";
 
 export default function MainPage() {
   const currentPath = useParams();
-  console.log(currentPath);
-  const [params, setParams] = useState({
-    searchValue: undefined || "photos",
-    lang: "ko",
-    per_page: 30,
-    order_by: "relevant",
-  });
+  console.log("경로", currentPath);
+  const [params, setParams] = useRecoilState(paramsState);
+
+  //경로에 아무 path 도 없으면 기본 검색 값, 기본 활성화 메뉴를 photos로
   console.log(params);
   return (
     <>
