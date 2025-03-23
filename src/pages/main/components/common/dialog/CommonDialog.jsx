@@ -1,6 +1,7 @@
 import ButtonLine from "@/shared/components/button/ButtonLine";
 import styles from "./commonDialog.module.scss";
 import { useEffect, useImperativeHandle, useRef } from "react";
+import formatDate from "@/shared/util/formatDate";
 
 export default function CommonDialog({ ref, selectedImage }) {
   console.log(selectedImage);
@@ -34,6 +35,7 @@ export default function CommonDialog({ ref, selectedImage }) {
     };
   }
   console.log(selectedImage);
+
   return (
     <dialog ref={dialogRef} className={styles.dialog}>
       <header className={styles.dialog__header}>
@@ -69,11 +71,11 @@ export default function CommonDialog({ ref, selectedImage }) {
             </div>
             <div className={styles.dialog__footer__info}>
               <span>업로드</span>
-              <p>{created_at}</p>
+              <p>{formatDate(created_at)}</p>
             </div>
             <div className={styles.dialog__footer__info}>
               <span>마지막 업데이트</span>
-              <p>{updated_at}</p>
+              <p>{formatDate(updated_at)}</p>
             </div>
             <div className={styles.dialog__footer__info}>
               <span>좋아요</span>
