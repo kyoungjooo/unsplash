@@ -4,6 +4,7 @@ import useInfinity from "@/hooks/useInfinity";
 import CommonDialog from "../dialog/CommonDialog";
 import { useRecoilState } from "recoil";
 import { paramsState } from "@/recoil/atoms/paramsAtom";
+import { useOutletContext } from "react-router-dom";
 const sliceNum = 10;
 
 const chunkArray = (array, size) => {
@@ -16,9 +17,13 @@ const chunkArray = (array, size) => {
 
 export default function ImagesContainer() {
   const lastImageItemRef = useRef(null);
-  const [params, setParams] = useRecoilState(paramsState);
   const dialogRef = useRef();
+  const { navData, currentPath } = useOutletContext();
+  const [params, setParams] = useRecoilState(paramsState);
   const [selectedImage, setSelectedImage] = useState(null);
+  const currentTitle = navData.find(
+    (menu) => menu.path === currentPath?.search
+  );
 
   const {
     data: imageLists,
@@ -69,9 +74,21 @@ export default function ImagesContainer() {
   }, [fetchNextPage, isLoading]);
 
   //3열이 넘어가면 다음 행으로 넘어가기
+
+  const handleReset = () => {
+    document.title = `${currentTitle.title} | Picture`;
+  };
+
+  useEffect(() => {
+    document.title = `${currentTitle.title} | Picture`;
+  }, [currentPath]);
   return (
     <>
-      <CommonDialog ref={dialogRef} selectedImage={selectedImage} />
+      <CommonDialog
+        ref={dialogRef}
+        selectedImage={selectedImage}
+        handleReset={handleReset}
+      />
       <div className={styles.images}>
         {chunkedimagesArray?.map((chunkedimages, idx) => {
           return (

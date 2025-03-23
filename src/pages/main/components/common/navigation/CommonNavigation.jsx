@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import styles from "./commonNavigation.module.scss";
-import { navData } from "./navData";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { paramsState } from "@/recoil/atoms/paramsAtom";
 
-export default function CommonNavigation() {
+import styles from "./commonNavigation.module.scss";
+
+export default function CommonNavigation({ currentPath, navData }) {
   const navigate = useNavigate();
-  const currentPath = useParams();
   const [navMenus, setNavMenus] = useState(navData);
   const [isActive, setActive] = useState(currentPath?.search);
   const sliceFixedMenuData = navMenus.slice(0, 2);

@@ -2,7 +2,11 @@ import ButtonLine from "@/shared/components/button/ButtonLine";
 import styles from "./commonDialog.module.scss";
 import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import formatDate from "@/shared/util/formatDate";
-export default forwardRef(function CommonDialog({ selectedImage }, ref) {
+
+export default forwardRef(function CommonDialog(
+  { selectedImage, handleReset },
+  ref
+) {
   console.log(selectedImage);
   const dialogRef = useRef();
   const {
@@ -20,10 +24,6 @@ export default forwardRef(function CommonDialog({ selectedImage }, ref) {
 
   useImperativeHandle(ref, handleModal);
 
-  useEffect(() => {
-    document.title = alternative_slugs?.ko;
-  }, [selectedImage]);
-
   function handleModal() {
     return {
       open() {
@@ -34,10 +34,13 @@ export default forwardRef(function CommonDialog({ selectedImage }, ref) {
       },
     };
   }
-  console.log(selectedImage);
+
+  useEffect(() => {
+    document.title = alternative_slugs?.ko;
+  }, [selectedImage]);
 
   return (
-    <dialog ref={dialogRef} className={styles.dialog}>
+    <dialog ref={dialogRef} className={styles.dialog} onClose={handleReset}>
       <header className={styles.dialog__header}>
         <div className={styles.dialog__header__left}>
           <img src={user?.profile_image.small} alt="profile_image" />

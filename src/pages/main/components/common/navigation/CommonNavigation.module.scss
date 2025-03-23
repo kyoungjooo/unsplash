@@ -55,6 +55,8 @@
       white-space: nowrap;
       height: 100%;
       border-bottom: 3px solid transparent;
+      cursor: pointer;
+
       &.active {
         color: $color-gray-800;
         font-weight: 700;
