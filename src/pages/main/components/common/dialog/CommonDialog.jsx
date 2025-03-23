@@ -7,7 +7,6 @@ export default forwardRef(function CommonDialog(
   { selectedImage, handleReset },
   ref
 ) {
-  console.log(selectedImage);
   const dialogRef = useRef();
   const {
     alt_description,
@@ -22,6 +21,8 @@ export default forwardRef(function CommonDialog(
     updated_at,
   } = selectedImage || {};
 
+  const formatSlug = alternative_slugs?.ko.split("-").slice(0, -1).join(" ");
+
   useImperativeHandle(ref, handleModal);
 
   function handleModal() {
@@ -34,9 +35,8 @@ export default forwardRef(function CommonDialog(
       },
     };
   }
-
   useEffect(() => {
-    document.title = alternative_slugs?.ko;
+    document.title = formatSlug;
   }, [selectedImage]);
 
   return (

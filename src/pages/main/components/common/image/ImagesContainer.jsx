@@ -76,12 +76,13 @@ export default function ImagesContainer() {
   //3열이 넘어가면 다음 행으로 넘어가기
 
   const handleReset = () => {
-    document.title = `${currentTitle.title} | Picture`;
+    document.title = `${currentTitle?.title ?? "Picture"}`;
   };
 
   useEffect(() => {
-    document.title = `${currentTitle.title} | Picture`;
+    document.title = `${currentTitle?.title ?? "Picture"}`;
   }, [currentPath]);
+
   return (
     <>
       <CommonDialog
