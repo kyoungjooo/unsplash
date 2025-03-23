@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./imagesContainer.module.scss";
 import useInfinity from "@/hooks/useInfinity";
-import { useOutletContext } from "react-router-dom";
 import CommonDialog from "../dialog/CommonDialog";
+import { useRecoilState } from "recoil";
+import { paramsState } from "@/recoil/atoms/paramsAtom";
 const sliceNum = 10;
 
 const chunkArray = (array, size) => {
@@ -15,9 +16,10 @@ const chunkArray = (array, size) => {
 
 export default function ImagesContainer() {
   const lastImageItemRef = useRef(null);
-  const params = useOutletContext();
+  const [params, setParams] = useRecoilState(paramsState);
   const dialogRef = useRef();
   const [selectedImage, setSelectedImage] = useState(null);
+
   const {
     data: imageLists,
     fetchNextPage,
@@ -26,6 +28,7 @@ export default function ImagesContainer() {
   } = useInfinity({
     params,
   });
+
   const { pages, pageParams } = imageLists || {};
 
   const handleOpenModal = (imageData) => {

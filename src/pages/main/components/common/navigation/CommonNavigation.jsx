@@ -2,13 +2,17 @@ import { useEffect, useState } from "react";
 import styles from "./commonNavigation.module.scss";
 import { navData } from "./navData";
 import { useNavigate, useParams } from "react-router-dom";
-export default function CommonNavigation({ setParams }) {
+import { useRecoilState } from "recoil";
+import { paramsState } from "@/recoil/atoms/paramsAtom";
+
+export default function CommonNavigation() {
   const navigate = useNavigate();
-  const params = useParams();
+  const currentPath = useParams();
   const [navMenus, setNavMenus] = useState(navData);
-  const [isActive, setActive] = useState(params?.search);
+  const [isActive, setActive] = useState(currentPath?.search);
   const sliceFixedMenuData = navMenus.slice(0, 2);
   const sliceScrollMenuData = navMenus.slice(2);
+  const [params, setParams] = useRecoilState(paramsState);
 
   const handleClickMenu = (menu) => {
     setParams((prev) => ({ ...prev, searchValue: menu.path }));
@@ -17,14 +21,17 @@ export default function CommonNavigation({ setParams }) {
   };
 
   useEffect(() => {
+    const activePath = currentPath.search || "photos";
     setNavMenus((prev) =>
-      prev.map((menu) =>
-        menu.path === isActive
-          ? { ...menu, isActive: true }
+      prev.map((menu, idx) =>
+        menu.path === isActive || (!currentPath.search && idx === 0)
+          ? //경로가 빈값이면 0번째 활성화
+            { ...menu, isActive: true }
           : { ...menu, isActive: false }
       )
     );
-  }, [isActive]);
+    setActive(activePath);
+  }, [currentPath]);
 
   return (
     <nav className={styles.navigation}>

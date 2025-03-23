@@ -3,12 +3,16 @@ import styles from "./commonHeader.module.scss";
 import logo from "@assets/images/logo.svg";
 import check from "@assets/images/check.svg";
 import { useNavigate } from "react-router-dom";
-
+import { useRecoilState } from "recoil";
+import { paramsState } from "@/recoil/atoms/paramsAtom";
 const languages = ["한국어", "영어"];
-export default function CommonHeader({ setParams }) {
+
+export default function CommonHeader() {
   const [isToggle, setToggle] = useState(false);
   const searchRef = useRef();
   const navigate = useNavigate();
+  const [params, setParams] = useRecoilState(paramsState);
+
   const handleToggleLanguage = () => {
     setToggle((prev) => !prev);
   };
@@ -17,7 +21,9 @@ export default function CommonHeader({ setParams }) {
     e.preventDefault();
     setParams((prev) => ({ ...prev, searchValue: searchRef.current.value }));
     navigate(searchRef.current.value);
+    searchRef.current.value = "";
   };
+
   //로고 누르면 photo로 이동,
   return (
     <header className={styles.header}>
