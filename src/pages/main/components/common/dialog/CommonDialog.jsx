@@ -2,6 +2,7 @@ import ButtonLine from "@/shared/components/button/ButtonLine";
 import styles from "./commonDialog.module.scss";
 import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import formatDate from "@/shared/util/formatDate";
+import { createPortal } from "react-dom";
 
 export default forwardRef(function CommonDialog(
   { selectedImage, handleReset },
@@ -39,7 +40,7 @@ export default forwardRef(function CommonDialog(
     document.title = formatSlug;
   }, [selectedImage]);
 
-  return (
+  return createPortal(
     <dialog ref={dialogRef} className={styles.dialog} onClose={handleReset}>
       <header className={styles.dialog__header}>
         <div className={styles.dialog__header__left}>
@@ -87,6 +88,7 @@ export default forwardRef(function CommonDialog(
           </div>
         </footer>
       </div>
-    </dialog>
+    </dialog>,
+    document.getElementById("modal")
   );
 });
